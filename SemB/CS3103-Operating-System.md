@@ -46,7 +46,7 @@
 
 # Program Status Word(PSW)
 **Contains execution status information (1 = Set, 0 = Reset)**
-> https://www.youtube.com/watch?v=ZcePbkpVpTg
+> https://www.youtube.com/watch?v=ZcePbkpVpTg  
 > https://www.youtube.com/watch?v=doV9_m7NWWc
 ## Conditional Flags
 - Carry(CY)
