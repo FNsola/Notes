@@ -14,7 +14,7 @@
 – store execution result temporarily
 
 # Processor
-**Control Unit and Arithmetic & Logic Unit(ALU)**
+**Control Unit and Arithmetic & Logic Unit(ALU)**  
 ![Machine Cycle](../Image/machine_cycle.png)
 ## Type
 ### Microprocessor
