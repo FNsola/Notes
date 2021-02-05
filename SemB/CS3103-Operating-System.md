@@ -99,8 +99,7 @@
 | Method | invoked with external device | Invoked INT instruction |
 | Priority | Lowest than software interrupts | Highest |
 | Synchronous | Asynchronous | Synchronous |
-| Type | Maskable Interrupt | Normal Interrupts |
-| ^ | Non Maskable Interrupt | Exception |
+| Type | Maskable Interrupt <br/> Non Maskable Interrupt | Normal Interrupts <br/> Exception |
 | Example | Keystroke depressions and mouse movements | All system calls |
 
 # Uniprogramming vs Multiprogramming
