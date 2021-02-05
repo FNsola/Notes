@@ -67,6 +67,17 @@
   | 1 | 0 | 1 |
   | 1 | 1 | 0 |
 ## Control Flags
-### Trap
-### Interrupt
-### Direction
+- Trap - (**1 = single-step, 0 = Normal execute**)
+  - For debugging
+  - break every instruction to see the variable and register
+- Interrupt (**1 = enable interrupt, 0 = disable interrupt**)
+- Direction (**1 = read memory from high to low, 0 = low to high**)
+
+# Interrupt
+**Typically indicate that some device or software needs service**
+## Hardware Interrupt
+1. Use interrupt line to signal the processor 
+2. Wait processor finishing the current instruction
+3. Processor send signal acknowledgement of interrupt
+4. Processor push PSW and PC onto control stack
+## Software Interrupt
