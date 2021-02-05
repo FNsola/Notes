@@ -75,9 +75,32 @@
 
 # Interrupt
 **Typically indicate that some device or software needs service**
-## Hardware Interrupt
-1. Use interrupt line to signal the processor 
-2. Wait processor finishing the current instruction
-3. Processor send signal acknowledgement of interrupt
-4. Processor push PSW and PC onto control stack
-## Software Interrupt
+## Type
+- Hardware Interrupt (External)
+- Internal Interrupt (Error while executing)
+- Software Interrupt
+## Flow
+![Memory Stack](../Image/memory_stack.png)  
+1. Use interrupt line to signal the processor  
+2. Wait processor finishing the current instruction  
+  **Need to wait till completion of important jobs (atomic operation)**  
+3. Processor send signal acknowledgement of interrupt  
+4. Push PSW, PC and other registers(if needed) onto control stack  
+5. Use interrupt ID to find the Interrupt Service Routine(ISR) address in interrupt vector  
+6. Load new PC value based on interrupt  
+7. Check the interrupt finish or not (if needed)  
+8. Restore the all value and continue executing instruction
+> https://www.geeksforgeeks.org/difference-between-hardware-interrupt-and-software-interrupt/
+
+| Type | Hardware | Software |
+| :---: | --- | --- |
+| Generation | External device or hardware | Any internal system |
+| PC | No increment | Increment |
+| Method | invoked with external device | Invoked INT instruction |
+| Priority | Lowest than software interrupts | Highest |
+| Synchronous | Asynchronous | Synchronous |
+| Type | Maskable Interrupt | Normal Interrupts |
+| ^ | Non Maskable Interrupt | Exception |
+| Example | Keystroke depressions and mouse movements | All system calls |
+
+# Uniprogramming vs Multiprogramming
