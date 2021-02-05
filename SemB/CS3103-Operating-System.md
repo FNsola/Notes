@@ -33,13 +33,13 @@
 
 # Instruction Execution
 **Fetches => Decodes => Executes => Stores**
-1. Instruction fetch (IF => fetch)
+1. Instruction fetch (IF => fetch)  
   a. Fetch main memory address that stores in PC
   b. Store instruction to IR
   c. PC point to next instruction address
-2. Instruction decode and register fetch (ID => decode)
+2. Instruction decode and register fetch (ID => decode)  
   - Interpret current instruction – opcode and operand(address)
-3. Execute (EX => execute)
+3. Execute (EX => execute)  
   a. Store operand in memory address register(MAR)
   b. Fetch data with MAR address and store in memory data register(MDR)
   c. Simple data – Pass to AC
@@ -50,7 +50,7 @@
 ## Conditional Flags
 - Carry(CY)
 - Parity(P) - (1 = Number of 1 is even, 0 = Number of 1 is odd)
-- Auxiliary carry(AC) - (1 = Lower Nibble(LN) carry)
+- Auxiliary carry(AC) - (1 = Lower Nibble(LN) carry)  
 **Usage on Binary coded Decimal(BCD)**
   - LN > 9 then add 6 to ACC
   - LN < 9 and AC = 1 then add 6 to ACC
