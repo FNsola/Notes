@@ -58,14 +58,14 @@
   - CY = 1 and Upper Nibble(UN) < 9 then add 6 to UN
 - Zero(Z) - (1 = ACC is zero)
 - Sign Flag(S) = Most Significant Bit(MSB)
-- Overflow flag(OV) - (1 = out of range)
+- Overflow flag(OV) - (1 = out of range)  
 `** In 2's complement [-2^(N-1), 2^(N-1) - 1]**`
-|In MSB |Out MSB|Overflow |
-| :---: | :---: |  :---:  |
-|0      |0      |0        |
-|0      |1      |1        |
-|1      |0      |1        |
-|1      |1      |0        |
+| In MSB | Out MSB | Overflow |
+| :---: | :---: | :---: |
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 0 |
 ## Control Flags
 ### Trap
 ### Interrupt
