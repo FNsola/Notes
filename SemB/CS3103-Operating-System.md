@@ -5,13 +5,13 @@
 ## I/O Modules
 **Moves data between the computer and the external environment**
 ## System Bus
-**communication among processors, main memory, and I/O modules**
+**Communication among processors, main memory, and I/O modules**
 ## Program Counter(PC)
-**holds address of the next instruction to be fetched**
+**Holds address of the next instruction to be fetched**
 ## Instruction Register(IR)
-**store fetched instruction**
+**Store fetched instruction**
 ## Accumulator(AC)
-**store execution result temporarily**
+**Store execution result temporarily**
 
 # Processor
 **Control Unit and Arithmetic & Logic Unit(ALU)**  
@@ -32,33 +32,32 @@
 - CPUs, caches, DSPs, GPUs, I/O devices and main memory(same chip)
 
 # Instruction Execution
-**Fetches => Decodes => Executes => Stores**
-1. Instruction fetch (IF => fetch)  
+1. Instruction fetch (IF - Fetch)  
   a. Fetch main memory address that stores in PC  
   b. Store instruction to IR  
   c. PC point to next instruction address
-2. Instruction decode and register fetch (ID => decode)  
+2. Instruction decode and register fetch (ID - Decode)  
 **Interpret current instruction – opcode and operand(address)**
-3. Execute (EX => execute)  
+3. Execute (EX - Execute)  
   a. Store operand in memory address register(MAR)  
   b. Fetch data with MAR address and store in memory data register(MDR)  
   c. Simple data – Pass to AC
-4. Register write back (WB => store)
+4. Register write back (WB - Store)
 
 # Program Status Word(PSW)
 **Contains execution status information (1 = Set, 0 = Reset)**
 ## Conditional Flags
 - Carry(CY)
-- Parity(P) - (1 = Number of 1 is even, 0 = Number of 1 is odd)
-- Auxiliary carry(AC) - (1 = Lower Nibble(LN) carry)  
+- Parity(P) - **1 = Number of 1 is even, 0 = Number of 1 is odd**
+- Auxiliary carry(AC) - **1 = Lower Nibble(LN) carry**  
 **Usage on Binary coded Decimal(BCD)**
   - LN > 9 then add 6 to ACC
   - LN < 9 and AC = 1 then add 6 to ACC
   - AC = 1 and LN in ACC < 9 then add 6 to LN
   - CY = 1 and Upper Nibble(UN) < 9 then add 6 to UN
-- Zero(Z) - (1 = ACC is zero)
-- Sign Flag(S) = Most Significant Bit(MSB)
-- Overflow flag(OV) - (1 = out of range)  
+- Zero(Z) - **1 = ACC is zero**
+- Sign Flag(S) - **Most Significant Bit(MSB)**
+- Overflow flag(OV) - **1 = out of range**  
 `** In 2's complement [-2^(N-1), 2^(N-1) - 1]**`
 
   | In MSB | Out MSB | Overflow |
