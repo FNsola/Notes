@@ -1,3 +1,4 @@
+```
 # Hardware
 ## Main Memory(RAM)
 - A set of locations(sequentially numbered addresses) stores data and programs
@@ -12,7 +13,9 @@
 – store fetched instruction
 ## Accumulator(AC)
 – store execution result temporarily
+```
 
+```
 # Processor
 **Control Unit and Arithmetic & Logic Unit(ALU)**  
 ![Machine Cycle](../Image/machine_cycle.png)
@@ -30,7 +33,9 @@
 ### System on a Chip (Soc)
 - handheld devices
 - CPUs, caches, DSPs, GPUs, I/O devices and main memory(same chip)
+```
 
+```
 # Instruction Execution
 **Fetches => Decodes => Executes => Stores**
 1. Instruction fetch (IF => fetch)
@@ -44,8 +49,9 @@
   b. Fetch data with MAR address and store in memory data register(MDR)
   c. Simple data – Pass to AC
 4. Register write back (WB => store)
+```
 
-<kbd>
+```
 # Program Status Word(PSW)
 **Contains execution status information**
 ## Conditional Flags
@@ -59,4 +65,4 @@
 ### Trap
 ### Interrupt
 ### Direction
-</kbd>
+```
