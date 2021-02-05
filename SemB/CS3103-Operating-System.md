@@ -59,8 +59,7 @@
 - Zero(Z) - (1 = ACC is zero)
 - Sign Flag(S) = Most Significant Bit(MSB)
 - Overflow flag(OV) - (1 = out of range)  
-`** In 2's complement [-2^(N-1), 2^(N-1) - 1]**`
-
+`** In 2's complement [-2^(N-1), 2^(N-1) - 1]**`  
 | In MSB | Out MSB | Overflow |
 | :---: | :---: | :---: |
 | 0 | 0 | 0 |
