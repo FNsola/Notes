@@ -106,7 +106,7 @@
 
 # Program
 - Uniprogramming - **Only one program is running at a given time**  
-> https://er.yuvayana.org/uniprogramming-and-multiprogramming-with-their-differences/  
+  > https://er.yuvayana.org/uniprogramming-and-multiprogramming-with-their-differences/
 
   | Advantage | Disadvantage |
   | --- | --- |
