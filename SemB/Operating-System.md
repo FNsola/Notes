@@ -1,5 +1,5 @@
 # Hardware
-- Main Memory(RAM)
+- Main Memory(RAM)  
   **A set of locations(sequentially numbered addresses) stores data and programs**  
   **Volatile (lost  when computer shut down)**
 - I/O Modules  
@@ -20,13 +20,13 @@
 - Holds frequently requested data and instructions
 - Reduce the average time to access data from the Main memory
 - Checks for a corresponding entry in the cache first
-- Allocates a new entry and copies in data from main memory for a cache miss
+- Allocates a new entry and copies in data from main memory for a cache miss  
   **Hit ratio = hit / (hit + miss) = no. of hits/total accesses**
 - Higher cache block size, higher associativity to reduce miss rate
 ## Mapping
 - Direct Mapping
   - Address space is split into index field(main memory) and tag field(cache)
-  - Maps each block of main memory into one possible cache line
+  - Maps each block of main memory into one possible cache line  
     **cache line number = main memory block numberm (modulo) number of lines in the cache**
   - Trashed a old block if a new block needs to be loaded
   - Performance is directly proportional to the Hit ratio
