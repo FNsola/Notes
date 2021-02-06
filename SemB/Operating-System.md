@@ -12,6 +12,26 @@
   **Store fetched instruction**
 - Accumulator(AC)  
   **Store execution result temporarily**
+  
+# Cache Memory
+> https://www.geeksforgeeks.org/cache-memory-in-computer-organization/  
+> https://www.gatevidyalay.com/direct-mapping-cache-mapping/
+## Typical
+**Holds frequently requested data and instructions**  
+**Reduce the average time to access data from the Main memory**  
+**Checks for a corresponding entry in the cache first**  
+**Allocates a new entry and copies in data from main memory for a cache miss**  
+  Hit ratio = hit / (hit + miss) = no. of hits/total accesses  
+  **Higher cache block size, higher associativity to reduce miss rate**  
+## Mapping
+- Direct Mapping
+  **Address space is split into index field(main memory) and tag field(cache)**  
+  **Maps each block of main memory into one possible cache line**  
+    cache line number = main memory block numberm (modulo) number of lines in the cache
+  **Trashed a old block if a new block needs to be loaded**  
+  **Performance is directly proportional to the Hit ratio**
+  ![Direct Mapping](../Image/direct_mapping.png)
+- Fully Associative Mapping
 
 # Processor
 **Control Unit and Arithmetic & Logic Unit(ALU)**  
