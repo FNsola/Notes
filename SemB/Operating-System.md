@@ -154,9 +154,10 @@
 - Programmed I/O
   > http://inputoutput5822.weebly.com/programmed-io.html
   ## Overview
-  **Processor executes a program to direct control**  
+  **Processor execute a program to direct control**  
   **Need to wait for I/O module to respond**  
   **I/O module must interpret the address lines**
+  ![Programmed I/O](../Image/programmed_io.png)
   
   | Advantage | Disadvantage |
   | --- | --- |
@@ -173,6 +174,27 @@
   | Separate memory space | Memory from the main memory |
   | Limited instructions can be used <br/> IN, OUT, INS, OUTS | Any instruction which references to memory |
 - Interrupt-driven I/O
+  > http://inputoutput5822.weebly.com/interrupt-driven-io.html
+  ## Overview
+  **Similar to programmed I/O**  
+  **Can execute other program while waiting I/O module to respond**
+  ![Interrupt Driven I/O](../Image/interrupt_driven_io.png)
+  
+  | Advantage | Disadvantage |
+  | --- | --- |
+  | Fast than programmed I/O | Tricky to write if using a low-level language |
+  | High utilization of CPU | Usually done by the hardware manufacturer |
+  ## Instruction
+  **To determine an interrupt signal in multiple I/O modules with the processor**  
+  **To process multiple interrupts with the processor**
+  
+  ---
+  
+  Solving
+  - Multiple Interrupt Lines
+  - Software Poll
+  - Daisy Chain (Hardware Poll, Vectored)
+  - Bus Arbitration (Vectored)
 - Direct memory access (DMA)
 
 # Program
