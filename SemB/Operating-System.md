@@ -190,12 +190,26 @@
   
   ---
   
-  Solving
-  - Multiple Interrupt Lines
-  - Software Poll
-  - Daisy Chain (Hardware Poll, Vectored)
-  - Bus Arbitration (Vectored)
+  ### Solving
+  - Multiple Interrupt Lines (high priority)
+    **Provide multiple interrupt lines between processor and I/O modules**
+    **Not practical**
+  - Software Poll (ordered priority)
+    **Interrupt branches to an interrupt service routine**  
+    **Every I/O module has an addressable status register and can be read by the processor to determine the interrupting module**  
+    **Poll with the command line and place on the address line**
+    **Time consuming**
+  - Daisy Chain (Hardware Poll, Vectored, ordered priority)
+    **Processor propagate interrupt acknowledgment throughout the series of I/O modules until requesting module**  
+    **Module responds by placing a word (vector - address or specific identifier) on the data lines**  
+    **Processor directs the module based on vector**  
+    **Removes the need for interrupt-service routine**
+  - Bus Arbitration (Vectored, high priority)
+    **I/O module gaining control over the bus before requesting for the interrupt**  
+    **Processor sends interrupt acknowledgment then requesting module places vector on the data lines**  
+    Limited to only one module at a time
 - Direct memory access (DMA)
+  > http://inputoutput5822.weebly.com/direct-memory-access.html
 
 # Program
 - Uniprogramming - **Only one program is running at a given time**  
