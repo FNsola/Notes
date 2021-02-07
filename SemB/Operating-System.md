@@ -24,7 +24,7 @@
 # Cache Memory
 > https://www.geeksforgeeks.org/cache-memory-in-computer-organization/  
 > https://www.gatevidyalay.com/direct-mapping-cache-mapping/
-## Typical
+## Overview
 - Holds frequently requested data and instructions
 - Reduce the average time to access data from the Main memory
 - Checks for a corresponding entry in the cache first
@@ -68,14 +68,14 @@
 - Multiprocessors  
   **Contains multiple processors(cores) on a single chip**
 - Graphical Processing Units(GPUs)
-  - Single-Instruction Multiple Data(SIMD) techniques 
-  - efficient computation on arrays of data
+  **Single-Instruction Multiple Data(SIMD) techniques**  
+  **efficient computation on arrays of data**
 - Digital Signal Processors(DSPs)
-  - Encoding/decoding speech and video (codecs)
-  - Provide support for encryption and security
+  **Encoding/decoding speech and video (codecs)**  
+  **Provide support for encryption and security**
 - System on a Chip (Soc)
-  - handheld devices
-  - CPUs, caches, DSPs, GPUs, I/O devices and main memory(same chip)
+  **handheld devices**  
+  **CPUs, caches, DSPs, GPUs, I/O devices and main memory(same chip)**
 
 # Instruction Execution
 1. Instruction fetch (IF - Fetch)  
@@ -149,6 +149,31 @@
 | Synchronous | Asynchronous | Synchronous |
 | Type | Maskable Interrupt <br/> Non Maskable Interrupt | Normal Interrupts <br/> Exception |
 | Example | Keystroke depressions and mouse movements | All system calls |
+
+# I/O Techniques
+- Programmed I/O
+  > http://inputoutput5822.weebly.com/programmed-io.html
+  ## Overview
+  **Processor executes a program to direct control**  
+  **Need to wait for I/O module to respond**  
+  **I/O module must interpret the address lines**
+  
+  | Advantage | Disadvantage |
+  | --- | --- |
+  | Simple to implement | Low utilization of CPU |
+  ## Command
+  - Control: activate a peripheral and tell it what to do
+  - Test: Test status conditions (power on-off, completed and errors)
+  - Read: I/O module to obtain data from the peripheral and place it in an internal buffer  
+          I/O module place it on the data bus when processor request obtaining data
+  - Write: I/O module takes data from the data bus and transmits it to the peripheral
+  ## Instruction
+  | Isolated I/O | Memory Mapped I/O |
+  | --- | --- |
+  | Separate memory space | Memory from the main memory |
+  | Limited instructions can be used <br/> IN, OUT, INS, OUTS | Any instruction which references to memory |
+- Interrupt-driven I/O
+- Direct memory access (DMA)
 
 # Program
 - Uniprogramming - **Only one program is running at a given time**  
