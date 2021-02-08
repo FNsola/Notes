@@ -209,7 +209,68 @@
     **Processor sends interrupt acknowledgment then requesting module places vector on the data lines**  
     Limited to only one module at a time
 - Direct memory access (DMA)
-  > http://inputoutput5822.weebly.com/direct-memory-access.html
+  > http://inputoutput5822.weebly.com/direct-memory-access.html  
+  > https://en.wikipedia.org/wiki/Direct_memory_access#Burst_mode
+  ## Overview
+  **Transfer data between main memory and external device without passing through the processor**  
+  **Processor has to share system bus with DMA module**  
+  **Only consume time when data transfer**  
+  **More efficient when large volume of data has to be transferred**  
+  ![Direct memory access](../Image/direct_memory_access.png)
+  
+  | Advantage | Disadvantage |
+  | --- | --- |
+  | Read / write memory not through processor | Increases system cost (DMA controller) |
+  | Faster processing | Need to solve cache coherence problems |
+  ## Instruction
+  ### Mode
+  - Burst mode
+  **Transfer block of data in one contiguous sequence**  
+  **Transfers all data in the data block before releasing control of system buses back to the CPU**  
+  **CPU long periods of time inactive**
+  - Cycle stealing mode
+  **System bus requested via BR and deasserted via BG to CPU (one byte)**  
+  **Slower than burst mode**  
+  **CPU idle is not longer than burst mode**  
+  **Useful for monitor data in real time.**
+  - Transparent mode
+  **Only transfers data when CPU does not use system buses**  
+  **Needs to determine CPU is not using the system buses (complex)**  
+  **CPU never stops executing its programs**  
+  **DMA transfer is free in terms of time**  
+  **Takes the most time to transfer a block of data**  
+  **Most efficient in terms of overall system performance**
+  ### Cache conherence
+  - Bus snooping
+  **External writes are signaled to the cache controller**  
+  **Cache invalidation for DMA writes**  
+  **Cache flush for DMA reads**
+  - Managed by software
+  **Flush cache line before outgoing DMA transfer**  
+  **Invalidated cache line before DMA transfer access memory range (not accessed by any running threads)**  
+  **Introduces some overhead to the DMA operation (loop to invalidate each cache line)**
+  - Hybrids
+  **L2 cache is coherent**  
+  **L1 cache (typically on-CPU) is managed by software**
+  ### Configurations
+  - Single-bus, detached DMA
+  **Share the same system bus**  
+  **DMA module (surrogate processor) uses programmed I/O to exchange data between memory and an I/O module**  
+  **Transfer a word consumes two bus cycles (inefficient)**  
+  **Inexpensive**  
+  ![Single-bus, detached DMA](../Image/detached_dma.png)
+  - Single-bus, integrated DMA
+  **DMA module:**  
+    **Controls multiple I/O modules (not include system bus)**  
+    **Only to exchange data with memory using system bus that shares with the processor**  
+    **Exchange data outside system bus with I/O modules**  
+  ![Single-bus, integrated DMA](../Image/integrated_dma.png)
+  - I/O bus
+  **I/O modules are connected to the DMA module using an I/O bus (reduce I/O interfaces)**  
+  **Easily expandable configuration**  
+  **Only to exchange data with memory using system bus that shares with the processor**  
+  **Exchange data outside system bus with I/O modules**  
+  ![I/O bus](../Image/io_bus_dma.png)
 
 # Program
 - Uniprogramming - **Only one program is running at a given time**  
