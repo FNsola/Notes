@@ -12,7 +12,6 @@
 - Access I/O devices (read and write)
 - Controlled access to files (protection and permission)
 - System access (user authorization)
-For shared or public systems, OS controls access to the system as a whole and to specific system resources in order to provide protection of resources and data from unauthorized users and resolve conflicts for resource contention. 
 - Error detection and response (deal with error)
 - Accounting (collect usage statistics and monitor performance)
 
