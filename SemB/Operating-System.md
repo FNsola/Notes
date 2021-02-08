@@ -1,3 +1,21 @@
+# Operating System (OS)
+## Overview
+**Controls the execution of application programs**  
+**An Interface between applications and hardware**  
+**Making a computer more convenient to use (Convenience)**  
+**Allowing computer resources to be used efficiently (Efficiency)**  
+**Permitting effective development, testing and introduction of new system functions without interfering with service (new / upgrade hardware, new services, fixes)**  
+![OS interface](../Image/os_interface.png)
+## Service
+- Program development (editor and debugger)
+- Program execution
+- Access I/O devices (read and write)
+- Controlled access to files (protection and permission)
+- System access (user authorization)
+For shared or public systems, OS controls access to the system as a whole and to specific system resources in order to provide protection of resources and data from unauthorized users and resolve conflicts for resource contention. 
+- Error detection and response (deal with error)
+- Accounting (collect usage statistics and monitor performance)
+
 # Hardware
 - Main Memory(RAM)  
   **A set of locations(sequentially numbered addresses) stores data and programs**  
