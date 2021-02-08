@@ -224,16 +224,16 @@
   | Faster processing | Need to solve cache coherence problems |
   ## Instruction
   ### Mode
-  - Burst mode
+  - Burst mode  
   **Transfer block of data in one contiguous sequence**  
   **Transfers all data in the data block before releasing control of system buses back to the CPU**  
   **CPU long periods of time inactive**
-  - Cycle stealing mode
+  - Cycle stealing mode  
   **System bus requested via BR and deasserted via BG to CPU (one byte)**  
   **Slower than burst mode**  
   **CPU idle is not longer than burst mode**  
   **Useful for monitor data in real time.**
-  - Transparent mode
+  - Transparent mode  
   **Only transfers data when CPU does not use system buses**  
   **Needs to determine CPU is not using the system buses (complex)**  
   **CPU never stops executing its programs**  
@@ -241,31 +241,31 @@
   **Takes the most time to transfer a block of data**  
   **Most efficient in terms of overall system performance**
   ### Cache conherence
-  - Bus snooping
+  - Bus snooping  
   **External writes are signaled to the cache controller**  
   **Cache invalidation for DMA writes**  
   **Cache flush for DMA reads**
-  - Managed by software
+  - Managed by software  
   **Flush cache line before outgoing DMA transfer**  
   **Invalidated cache line before DMA transfer access memory range (not accessed by any running threads)**  
   **Introduces some overhead to the DMA operation (loop to invalidate each cache line)**
-  - Hybrids
+  - Hybrids  
   **L2 cache is coherent**  
   **L1 cache (typically on-CPU) is managed by software**
   ### Configurations
-  - Single-bus, detached DMA
+  - Single-bus, detached DMA  
   **Share the same system bus**  
   **DMA module (surrogate processor) uses programmed I/O to exchange data between memory and an I/O module**  
   **Transfer a word consumes two bus cycles (inefficient)**  
   **Inexpensive**  
   ![Single-bus, detached DMA](../Image/detached_dma.png)
-  - Single-bus, integrated DMA
+  - Single-bus, integrated DMA  
   **DMA module:**  
     **Controls multiple I/O modules (not include system bus)**  
     **Only to exchange data with memory using system bus that shares with the processor**  
     **Exchange data outside system bus with I/O modules**  
   ![Single-bus, integrated DMA](../Image/integrated_dma.png)
-  - I/O bus
+  - I/O bus  
   **I/O modules are connected to the DMA module using an I/O bus (reduce I/O interfaces)**  
   **Easily expandable configuration**  
   **Only to exchange data with memory using system bus that shares with the processor**  
