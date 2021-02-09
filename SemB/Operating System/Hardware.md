@@ -20,7 +20,7 @@
   **Store fetched instruction**
 - Accumulator(AC)  
   **Store execution result temporarily**
-- Processor
+- Processor  
   **Control Unit and Arithmetic & Logic Unit(ALU)**  
   ![Machine Cycle](Image/machine_cycle.png)
   ## Type
