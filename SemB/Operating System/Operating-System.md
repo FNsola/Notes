@@ -37,7 +37,7 @@
 - Internal Interrupt (Error while executing)
 - Software Interrupt
 ### Flow
-![Memory Stack](../Image/memory_stack.png)  
+![Memory Stack](Image/memory_stack.png)  
 1. Use interrupt line to signal the processor  
 2. Wait processor finishing the current instruction  
   **Need to wait till completion of important jobs (atomic operation)**  
