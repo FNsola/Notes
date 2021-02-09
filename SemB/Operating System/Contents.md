@@ -1,4 +1,6 @@
 <p align="center">
   <b>Contents</b>
 </p>
-![Test](../SemB/Operating-System.md)
+<p>
+  <a href="../SemB/Operating-System.md">Test</p>
+</p>
