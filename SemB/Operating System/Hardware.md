@@ -23,7 +23,6 @@
 - Processor  
   **Control Unit and Arithmetic & Logic Unit(ALU)**  
   ![Machine Cycle](Image/machine_cycle.png)
-  ## Type
   - Microprocessor  
   **Contains a processor on a single chip**
   - Multiprocessors  
