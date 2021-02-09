@@ -2,5 +2,5 @@
   <b>Contents</b>
 </p>
 <p>
-  <a href="../SemB/Operating-System.md">Test</p>
+  <a href="Test.md">Test</p>
 </p>
