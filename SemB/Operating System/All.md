@@ -1,11 +1,13 @@
-# Operating System (OS)
+# Operating System
+
 ## Overview
-**Controls the execution of application programs**  
-**An Interface between applications and hardware**  
-**Making a computer more convenient to use (Convenience)**  
-**Allowing computer resources to be used efficiently (Efficiency)**  
-**Permitting effective development, testing and introduction of new system functions without interfering with service (new / upgrade hardware, new services, fixes)**  
-![OS interface](../Image/os_interface.png)
+- Controls the execution of application programs
+- An Interface between applications and hardware
+- Making a computer more convenient to use (Convenience)
+- Allowing computer resources to be used efficiently (Efficiency)
+- Permitting effective development, testing and introduction of new system functions without interfering with service (new / upgrade hardware, new services, fixes)  
+![OS interface](Image/os_interface.png)
+
 ## Service
 - Program development (editor and debugger)
 - Program execution
@@ -14,6 +16,48 @@
 - System access (user authorization)
 - Error detection and response (deal with error)
 - Accounting (collect usage statistics and monitor performance)
+
+## Instruction Execution
+1. Instruction fetch (IF - Fetch)  
+  a. Fetch main memory address that stores in PC  
+  b. Store instruction to IR  
+  c. PC point to next instruction address
+2. Instruction decode and register fetch (ID - Decode)  
+**Interpret current instruction – opcode and operand(address)**
+3. Execute (EX - Execute)  
+  a. Store operand in memory address register(MAR)  
+  b. Fetch data with MAR address and store in memory data register(MDR)  
+  c. Simple data – Pass to AC
+4. Register write back (WB - Store)
+
+## Interrupt
+**Typically indicate that some device or software needs service**
+### Type
+- Hardware Interrupt (External)
+- Internal Interrupt (Error while executing)
+- Software Interrupt
+### Flow
+![Memory Stack](Image/memory_stack.png)  
+1. Use interrupt line to signal the processor  
+2. Wait processor finishing the current instruction  
+  **Need to wait till completion of important jobs (atomic operation)**  
+3. Processor send signal acknowledgement of interrupt  
+4. Push PSW, PC and other registers(if needed) onto control stack  
+5. Use interrupt ID to find the Interrupt Service Routine(ISR) address in interrupt vector  
+6. Load new PC value based on interrupt  
+7. Check the interrupt finish or not (if needed)  
+8. Restore the all value and continue executing instruction
+> https://www.geeksforgeeks.org/difference-between-hardware-interrupt-and-software-interrupt/
+
+| Type | Hardware | Software |
+| :---: | --- | --- |
+| Generation | External device or hardware | Any internal system |
+| PC | No increment | Increment |
+| Method | invoked with external device | Invoked INT instruction |
+| Priority | Lowest than software interrupts | Highest |
+| Synchronous | Asynchronous | Synchronous |
+| Type | Maskable Interrupt <br/> Non Maskable Interrupt | Normal Interrupts <br/> Exception |
+| Example | Keystroke depressions and mouse movements | All system calls |
 
 # Hardware
 - Main Memory(RAM)  
@@ -37,7 +81,23 @@
   **Store fetched instruction**
 - Accumulator(AC)  
   **Store execution result temporarily**
-  
+- Processor  
+  **Control Unit and Arithmetic & Logic Unit(ALU)**  
+  ![Machine Cycle](Image/machine_cycle.png)
+  - Microprocessor  
+  **Contains a processor on a single chip**
+  - Multiprocessors  
+  **Contains multiple processors(cores) on a single chip**
+  - Graphical Processing Units(GPUs)
+  **Single-Instruction Multiple Data(SIMD) techniques**  
+  **efficient computation on arrays of data**
+  - Digital Signal Processors(DSPs)
+  **Encoding/decoding speech and video (codecs)**  
+  **Provide support for encryption and security**
+  - System on a Chip (Soc)
+  **handheld devices**  
+  **CPUs, caches, DSPs, GPUs, I/O devices and main memory(same chip)**
+
 # Cache Memory
 > https://www.geeksforgeeks.org/cache-memory-in-computer-organization/  
 > https://www.gatevidyalay.com/direct-mapping-cache-mapping/
@@ -55,7 +115,7 @@
     **Cache line number = (Main memory block number) Modulo (Number of lines in the cache)**
   - Trashed a old block if a new block needs to be loaded
   - Performance is directly proportional to the Hit ratio
-  ![Direct Mapping](../Image/direct_mapping.png)
+  ![Direct Mapping](Image/direct_mapping.png)
 - Fully Associative Mapping
   - A block of main memory can be mapped to any freely available cache line
   - Replacement algorithm is needed if the cache is full
@@ -74,38 +134,7 @@
   - Memory block can map to any freely available cache line  
     **Number of line in the in the cache number of sets = (Number of sets in cache) * (Number of liness in each set)
     **Cache set number = (Main memory block number) Modulo (Number of sets in cache)**
-  ![Set Associative Mapping](../Image/set_associative_mapping.png)
-
-# Processor
-**Control Unit and Arithmetic & Logic Unit(ALU)**  
-![Machine Cycle](../Image/machine_cycle.png)
-## Type
-- Microprocessor  
-  **Contains a processor on a single chip**
-- Multiprocessors  
-  **Contains multiple processors(cores) on a single chip**
-- Graphical Processing Units(GPUs)
-  **Single-Instruction Multiple Data(SIMD) techniques**  
-  **efficient computation on arrays of data**
-- Digital Signal Processors(DSPs)
-  **Encoding/decoding speech and video (codecs)**  
-  **Provide support for encryption and security**
-- System on a Chip (Soc)
-  **handheld devices**  
-  **CPUs, caches, DSPs, GPUs, I/O devices and main memory(same chip)**
-
-# Instruction Execution
-1. Instruction fetch (IF - Fetch)  
-  a. Fetch main memory address that stores in PC  
-  b. Store instruction to IR  
-  c. PC point to next instruction address
-2. Instruction decode and register fetch (ID - Decode)  
-**Interpret current instruction – opcode and operand(address)**
-3. Execute (EX - Execute)  
-  a. Store operand in memory address register(MAR)  
-  b. Fetch data with MAR address and store in memory data register(MDR)  
-  c. Simple data – Pass to AC
-4. Register write back (WB - Store)
+  ![Set Associative Mapping](Image/set_associative_mapping.png)
 
 # Program Status Word(PSW)
 **Contains execution status information (1 = Set, 0 = Reset)**
@@ -138,35 +167,6 @@
 - Interrupt (**1 = enable interrupt, 0 = disable interrupt**)
 - Direction (**1 = read memory from high to low, 0 = low to high**)
 
-# Interrupt
-**Typically indicate that some device or software needs service**
-## Type
-- Hardware Interrupt (External)
-- Internal Interrupt (Error while executing)
-- Software Interrupt
-## Flow
-![Memory Stack](../Image/memory_stack.png)  
-1. Use interrupt line to signal the processor  
-2. Wait processor finishing the current instruction  
-  **Need to wait till completion of important jobs (atomic operation)**  
-3. Processor send signal acknowledgement of interrupt  
-4. Push PSW, PC and other registers(if needed) onto control stack  
-5. Use interrupt ID to find the Interrupt Service Routine(ISR) address in interrupt vector  
-6. Load new PC value based on interrupt  
-7. Check the interrupt finish or not (if needed)  
-8. Restore the all value and continue executing instruction
-> https://www.geeksforgeeks.org/difference-between-hardware-interrupt-and-software-interrupt/
-
-| Type | Hardware | Software |
-| :---: | --- | --- |
-| Generation | External device or hardware | Any internal system |
-| PC | No increment | Increment |
-| Method | invoked with external device | Invoked INT instruction |
-| Priority | Lowest than software interrupts | Highest |
-| Synchronous | Asynchronous | Synchronous |
-| Type | Maskable Interrupt <br/> Non Maskable Interrupt | Normal Interrupts <br/> Exception |
-| Example | Keystroke depressions and mouse movements | All system calls |
-
 # I/O Techniques
 - Programmed I/O
   > http://inputoutput5822.weebly.com/programmed-io.html
@@ -174,7 +174,7 @@
   **Processor execute a program to direct control**  
   **Need to wait for I/O module to respond**  
   **I/O module must interpret the address lines**
-  ![Programmed I/O](../Image/programmed_io.png)
+  ![Programmed I/O](Image/programmed_io.png)
   
   | Advantage | Disadvantage |
   | --- | --- |
@@ -195,7 +195,7 @@
   ## Overview
   **Similar to programmed I/O**  
   **Can execute other program while waiting I/O module to respond**  
-  ![Interrupt Driven I/O](../Image/interrupt_driven_io.png)
+  ![Interrupt Driven I/O](Image/interrupt_driven_io.png)
   
   | Advantage | Disadvantage |
   | --- | --- |
@@ -233,7 +233,7 @@
   **Processor has to share system bus with DMA module**  
   **Only consume time when data transfer**  
   **More efficient when large volume of data has to be transferred**  
-  ![Direct memory access](../Image/direct_memory_access.png)
+  ![Direct memory access](Image/direct_memory_access.png)
   
   | Advantage | Disadvantage |
   | --- | --- |
@@ -275,19 +275,19 @@
   **DMA module (surrogate processor) uses programmed I/O to exchange data between memory and an I/O module**  
   **Transfer a word consumes two bus cycles (inefficient)**  
   **Inexpensive**  
-  ![Single-bus, detached DMA](../Image/detached_dma.png)
+  ![Single-bus, detached DMA](Image/detached_dma.png)
   - Single-bus, integrated DMA  
   **DMA module:**  
     **Controls multiple I/O modules (not include system bus)**  
     **Only to exchange data with memory using system bus that shares with the processor**  
     **Exchange data outside system bus with I/O modules**  
-  ![Single-bus, integrated DMA](../Image/integrated_dma.png)
+  ![Single-bus, integrated DMA](Image/integrated_dma.png)
   - I/O bus  
   **I/O modules are connected to the DMA module using an I/O bus (reduce I/O interfaces)**  
   **Easily expandable configuration**  
   **Only to exchange data with memory using system bus that shares with the processor**  
   **Exchange data outside system bus with I/O modules**  
-  ![I/O bus](../Image/io_bus_dma.png)
+  ![I/O bus](Image/io_bus_dma.png)
 
 # Program
 - Uniprogramming - **Only one program is running at a given time**  
@@ -306,5 +306,3 @@
   | High CPU utilization | Require CPU scheduling |
   |  | Memory management (difficult design) |
 - Parallel Programming - **Execute program same time**
-
-  
