@@ -23,7 +23,7 @@
   b. Store instruction to IR  
   c. PC point to next instruction address
 2. Instruction decode and register fetch (ID - Decode)  
-**Interpret current instruction – opcode and operand(address)**
+  **Interpret current instruction – opcode and operand(address)**
 3. Execute (EX - Execute)  
   a. Store operand in memory address register(MAR)  
   b. Fetch data with MAR address and store in memory data register(MDR)  
@@ -59,6 +59,50 @@
 | Type | Maskable Interrupt <br/> Non Maskable Interrupt | Normal Interrupts <br/> Exception |
 | Example | Keystroke depressions and mouse movements | All system calls |
 
+## Process
+> https://afteracademy.com/blog/what-is-burst-arrival-exit-response-waiting-turnaround-time-and-throughput
+### Burst time
+**Execution total time by processor on the CPU**  
+### Arrival time
+**Process enters into the ready state and ready execution**  
+### Exit time
+**Process completes execution and exit the system**  
+### Response time
+**Process is in the ready state and gets the CPU for the first time (Burst time of all previous process - Arrival time)**  
+### Turnaround time
+**process come from ready state for the first time to its completion (Burst time + Waiting time or Exit time - Arrival time)**  
+### Waiting time
+**process in the ready state waiting for CPU(Turnaround time - Burst time)**
+### Management
+- Interleave the execution of multiple processes  
+  - Starvation  
+    **Lower priority process never get CPU**  
+    **Increase priority of low priority processes after some fixed amount of time quantum (Aging)**  
+  ---
+  > https://www.geeksforgeeks.org/difference-between-dispatcher-and-scheduler/
+  - Dispatcher  
+    **Small program in main memory that switches the process**  
+    **Gives a process control over the CPU after it has been selected by the short-term scheduler**
+    - Switching context
+    > https://afteracademy.com/blog/what-is-context-switching-in-operating-system
+    - Switching to user mode
+    - Jumping to the proper location in the user program to restart that program
+  - Scheduler 
+    - Long term (job)  
+      **Decides how many process store or load into main memory**  
+      **The degree of multi-programming of system (How many process stay in the ready queue)**
+    - Medium term  
+      **Sends required I/O operation process from running queue to blocked queue**  
+      **Shifted a completed I/O operation process to ready queue**
+    - Short term (CPU)  
+      **Select a single process in the ready queue for execution**  
+    ![Scheduler](Image/scheduler.png)    
+- Allocate resources to processes
+- Protect the resources of each process from other processes
+- Enable processes :
+  **Share and exchange information**  
+  **Synchronization among each other**
+
 # Hardware
 - Main Memory(RAM)  
   **A set of locations(sequentially numbered addresses) stores data and programs**  
@@ -85,18 +129,18 @@
   **Control Unit and Arithmetic & Logic Unit(ALU)**  
   ![Machine Cycle](Image/machine_cycle.png)
   - Microprocessor  
-  **Contains a processor on a single chip**
+    **Contains a processor on a single chip**
   - Multiprocessors  
-  **Contains multiple processors(cores) on a single chip**
+    **Contains multiple processors(cores) on a single chip**
   - Graphical Processing Units(GPUs)
-  **Single-Instruction Multiple Data(SIMD) techniques**  
-  **efficient computation on arrays of data**
+    **Single-Instruction Multiple Data(SIMD) techniques**  
+    **efficient computation on arrays of data**
   - Digital Signal Processors(DSPs)
-  **Encoding/decoding speech and video (codecs)**  
-  **Provide support for encryption and security**
+    **Encoding/decoding speech and video (codecs)**  
+    **Provide support for encryption and security**
   - System on a Chip (Soc)
-  **handheld devices**  
-  **CPUs, caches, DSPs, GPUs, I/O devices and main memory(same chip)**
+    **handheld devices**  
+    **CPUs, caches, DSPs, GPUs, I/O devices and main memory(same chip)**
 
 # Cache Memory
 > https://www.geeksforgeeks.org/cache-memory-in-computer-organization/  
@@ -152,7 +196,7 @@
 - Zero(Z) - (**1 = ACC is zero**)
 - Sign Flag(S) - (**Most Significant Bit(MSB)**)
 - Overflow flag(OV) - (**1 = out of range**)  
-`** In 2's complement [-2^(N-1), 2^(N-1) - 1]**`
+  `** In 2's complement [-2^(N-1), 2^(N-1) - 1]**`
 
   | In MSB | Out MSB | Overflow |
   | :---: | :---: | :---: |
@@ -173,7 +217,7 @@
   ## Overview
   **Processor execute a program to direct control**  
   **Need to wait for I/O module to respond**  
-  **I/O module must interpret the address lines**
+  **I/O module must interpret the address lines**  
   ![Programmed I/O](Image/programmed_io.png)
   
   | Advantage | Disadvantage |
@@ -242,51 +286,51 @@
   ## Instruction
   ### Mode
   - Burst mode  
-  **Transfer block of data in one contiguous sequence**  
-  **Transfers all data in the data block before releasing control of system buses back to the CPU**  
-  **CPU long periods of time inactive**
+    **Transfer block of data in one contiguous sequence**  
+    **Transfers all data in the data block before releasing control of system buses back to the CPU**  
+    **CPU long periods of time inactive**
   - Cycle stealing mode  
-  **System bus requested via BR and deasserted via BG to CPU (one byte)**  
-  **Slower than burst mode**  
-  **CPU idle is not longer than burst mode**  
-  **Useful for monitor data in real time.**
+    **System bus requested via BR and deasserted via BG to CPU (one byte)**  
+    **Slower than burst mode**  
+    **CPU idle is not longer than burst mode**  
+    **Useful for monitor data in real time.**
   - Transparent mode  
-  **Only transfers data when CPU does not use system buses**  
-  **Needs to determine CPU is not using the system buses (complex)**  
-  **CPU never stops executing its programs**  
-  **DMA transfer is free in terms of time**  
-  **Takes the most time to transfer a block of data**  
-  **Most efficient in terms of overall system performance**
+    **Only transfers data when CPU does not use system buses**  
+    **Needs to determine CPU is not using the system buses (complex)**  
+    **CPU never stops executing its programs**  
+    **DMA transfer is free in terms of time**  
+    **Takes the most time to transfer a block of data**  
+    **Most efficient in terms of overall system performance**
   ### Cache conherence
   - Bus snooping  
-  **External writes are signaled to the cache controller**  
-  **Cache invalidation for DMA writes**  
-  **Cache flush for DMA reads**
+    **External writes are signaled to the cache controller**  
+    **Cache invalidation for DMA writes**  
+    **Cache flush for DMA reads**
   - Managed by software  
-  **Flush cache line before outgoing DMA transfer**  
-  **Invalidated cache line before DMA transfer access memory range (not accessed by any running threads)**  
-  **Introduces some overhead to the DMA operation (loop to invalidate each cache line)**
+    **Flush cache line before outgoing DMA transfer**  
+    **Invalidated cache line before DMA transfer access memory range (not accessed by any running threads)**  
+    **Introduces some overhead to the DMA operation (loop to invalidate each cache line)**
   - Hybrids  
-  **L2 cache is coherent**  
-  **L1 cache (typically on-CPU) is managed by software**
+    **L2 cache is coherent**  
+    **L1 cache (typically on-CPU) is managed by software**
   ### Configurations
   - Single-bus, detached DMA  
-  **Share the same system bus**  
-  **DMA module (surrogate processor) uses programmed I/O to exchange data between memory and an I/O module**  
-  **Transfer a word consumes two bus cycles (inefficient)**  
-  **Inexpensive**  
+    **Share the same system bus**  
+    **DMA module (surrogate processor) uses programmed I/O to exchange data between memory and an I/O module**  
+    **Transfer a word consumes two bus cycles (inefficient)**  
+    **Inexpensive**  
   ![Single-bus, detached DMA](Image/detached_dma.png)
   - Single-bus, integrated DMA  
-  **DMA module:**  
+    **DMA module:**  
     **Controls multiple I/O modules (not include system bus)**  
     **Only to exchange data with memory using system bus that shares with the processor**  
     **Exchange data outside system bus with I/O modules**  
   ![Single-bus, integrated DMA](Image/integrated_dma.png)
   - I/O bus  
-  **I/O modules are connected to the DMA module using an I/O bus (reduce I/O interfaces)**  
-  **Easily expandable configuration**  
-  **Only to exchange data with memory using system bus that shares with the processor**  
-  **Exchange data outside system bus with I/O modules**  
+    **I/O modules are connected to the DMA module using an I/O bus (reduce I/O interfaces)**  
+    **Easily expandable configuration**  
+    **Only to exchange data with memory using system bus that shares with the processor**  
+    **Exchange data outside system bus with I/O modules**  
   ![I/O bus](Image/io_bus_dma.png)
 
 # Program
