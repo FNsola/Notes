@@ -73,18 +73,35 @@
 **process come from ready state for the first time to its completion (Burst time + Waiting time or Exit time - Arrival time)**  
 ### Waiting time
 **process in the ready state waiting for CPU(Turnaround time - Burst time)**
+### Mode
+> https://www.tutorialspoint.com/User-Mode-vs-Kernel-Mode
+- User mode
+  - Running user application
+  - Transit to kernel mode when the application requests help of the operating system, an interrupt or a system call occurs
+- Kernal mode
+  - Starts in kernel mode when the system boots
+  - Executes applications in user mode after the operating system is loaded
+  - Some privileged instructions that can only be executed in kernel mode (interrupt instruction and input-output management etc)
+- Necessity
+  - The operating system can be accidentally wiped out and overwritten by data in a running user program
+  - Processes can write in the same system at the same time
+![User mode and Kernal mode](Image/kernal-user_mode.png)
 ### Management
 - Interleave the execution of multiple processes  
   - Starvation  
     **Lower priority process never get CPU**  
     **Increase priority of low priority processes after some fixed amount of time quantum (Aging)**  
   ---
-  > https://www.geeksforgeeks.org/difference-between-dispatcher-and-scheduler/
+  > https://www.geeksforgeeks.org/difference-between-dispatcher-and-scheduler/  
+  > https://afteracademy.com/blog/what-is-context-switching-in-operating-system  
   - Dispatcher  
     **Small program in main memory that switches the process**  
     **Gives a process control over the CPU after it has been selected by the short-term scheduler**
     - Switching context
-    > https://afteracademy.com/blog/what-is-context-switching-in-operating-system
+      - Save the current process context before putting another process in running state
+      - Running process should be stopped for CPU executing higher priority process when it comes in the ready state
+      - Stop the process in running state to handle the interruption when it occurs
+      - Transition between user mode and kernel mode
     - Switching to user mode
     - Jumping to the proper location in the user program to restart that program
   - Scheduler 
