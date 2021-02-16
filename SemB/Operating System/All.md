@@ -307,6 +307,34 @@
   |  | Memory management (difficult design) |
 - Parallel Programming - **Execute program same time**
 
+# Process State
+## Notes
+> https://www.gatevidyalay.com/process-states-in-operating-system/  
+> https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/
+- Minimum states:
+  - New state, ready state, run state and terminate state (4)
+  - Requires the I/O operation (5)
+- N processor can execute only N process at a time
+- State to suspend state
+  - Moving a process with lower priority from ready state to suspend ready state
+  - Moving a process with lower priority from wait state to suspend wait stat
+## State
+- New / Create  
+  **A program present in secondary memory that will be picked up by OS to create and initiate the process for execution**
+- Run  
+  **The process is assigned to the CPU and executed by any one of the available CPU cores**
+- Terminated or completed  
+  **After execution is completed**  
+  **The process in context (PCB) is deleted by the OS**
+- Ready
+  **The process load into main memory**  
+  **The process ready to run and wait to get the CPU time for its execution (queue)**
+- Suspend ready
+- Wait or Blocked
+- Suspend wait or Suspend blocked
+![Process State](Image/process-state.png)  
+![Two suspend state](Image/two-suspend-states.png)
+
 # Process
 > https://afteracademy.com/blog/what-is-burst-arrival-exit-response-waiting-turnaround-time-and-throughput
 ### Burst time
@@ -373,25 +401,3 @@
 - Enable processes :
   **Share and exchange information**  
   **Synchronization among each other**
-  
-# Process State
-## Notes
-> https://www.gatevidyalay.com/process-states-in-operating-system/  
-> https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/
-- Minimum states:
-  - New state, ready state, run state and terminate state (4)
-  - Requires the I/O operation (5)
-- N processor can execute only N process at a time
-- State to suspend state
-  - Moving a process with lower priority from ready state to suspend ready state
-  - Moving a process with lower priority from wait state to suspend wait stat
-## State
-- New / Create
-- Run
-- Terminated or completed
-- Ready
-- Suspend ready
-- Wait or Blocked
-- Suspend wait or Suspend blocked
-![Process State](Image/process-state.png)  
-![Two suspend state](Image/two-suspend-state.png)
