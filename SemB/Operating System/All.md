@@ -59,67 +59,6 @@
 | Type | Maskable Interrupt <br/> Non Maskable Interrupt | Normal Interrupts <br/> Exception |
 | Example | Keystroke depressions and mouse movements | All system calls |
 
-## Process
-> https://afteracademy.com/blog/what-is-burst-arrival-exit-response-waiting-turnaround-time-and-throughput
-### Burst time
-**Execution total time by processor on the CPU**  
-### Arrival time
-**Process enters into the ready state and ready execution**  
-### Exit time
-**Process completes execution and exit the system**  
-### Response time
-**Process is in the ready state and gets the CPU for the first time (Burst time of all previous process - Arrival time)**  
-### Turnaround time
-**process come from ready state for the first time to its completion (Burst time + Waiting time or Exit time - Arrival time)**  
-### Waiting time
-**process in the ready state waiting for CPU(Turnaround time - Burst time)**
-### Mode
-> https://www.tutorialspoint.com/User-Mode-vs-Kernel-Mode
-- User mode
-  - Running user application
-  - Transit to kernel mode when the application requests help of the operating system, an interrupt or a system call occurs
-- Kernal mode
-  - Starts in kernel mode when the system boots
-  - Executes applications in user mode after the operating system is loaded
-  - Some privileged instructions that can only be executed in kernel mode (interrupt instruction and input-output management etc)
-- Necessity
-  - The operating system can be accidentally wiped out and overwritten by data in a running user program
-  - Processes can write in the same system at the same time
-![User mode and Kernal mode](Image/kernal-user_mode.png)
-### Management
-- Interleave the execution of multiple processes  
-  - Starvation  
-    **Lower priority process never get CPU**  
-    **Increase priority of low priority processes after some fixed amount of time quantum (Aging)**  
-  ---
-  > https://www.geeksforgeeks.org/difference-between-dispatcher-and-scheduler/  
-  > https://afteracademy.com/blog/what-is-context-switching-in-operating-system  
-  - Dispatcher  
-    **Small program in main memory that switches the process**  
-    **Gives a process control over the CPU after it has been selected by the short-term scheduler**
-    - Switching context
-      - Save the current process context before putting another process in running state
-      - Running process should be stopped for CPU executing higher priority process when it comes in the ready state
-      - Stop the process in running state to handle the interruption when it occurs
-      - Transition between user mode and kernel mode
-    - Switching to user mode
-    - Jumping to the proper location in the user program to restart that program
-  - Scheduler 
-    - Long term (job)  
-      **Decides how many process store or load into main memory**  
-      **The degree of multi-programming of system (How many process stay in the ready queue)**
-    - Medium term  
-      **Sends required I/O operation process from running queue to blocked queue**  
-      **Shifted a completed I/O operation process to ready queue**
-    - Short term (CPU)  
-      **Select a single process in the ready queue for execution**  
-    ![Scheduler](Image/scheduler.png)    
-- Allocate resources to processes
-- Protect the resources of each process from other processes
-- Enable processes :
-  **Share and exchange information**  
-  **Synchronization among each other**
-
 # Hardware
 - Main Memory(RAM)  
   **A set of locations(sequentially numbered addresses) stores data and programs**  
@@ -367,3 +306,92 @@
   | High CPU utilization | Require CPU scheduling |
   |  | Memory management (difficult design) |
 - Parallel Programming - **Execute program same time**
+
+# Process
+> https://afteracademy.com/blog/what-is-burst-arrival-exit-response-waiting-turnaround-time-and-throughput
+### Burst time
+**Execution total time by processor on the CPU**  
+### Arrival time
+**Process enters into the ready state and ready execution**  
+### Exit time
+**Process completes execution and exit the system**  
+### Response time
+**Process is in the ready state and gets the CPU for the first time (Burst time of all previous process - Arrival time)**  
+### Turnaround time
+**process come from ready state for the first time to its completion (Burst time + Waiting time or Exit time - Arrival time)**  
+### Waiting time
+**process in the ready state waiting for CPU(Turnaround time - Burst time)**
+### Mode
+> https://www.tutorialspoint.com/User-Mode-vs-Kernel-Mode
+- User mode
+  - Running user application
+  - Transit to kernel mode when the application requests help of the operating system, an interrupt or a system call occurs
+- Kernal mode
+  - Starts in kernel mode when the system boots
+  - Executes applications in user mode after the operating system is loaded
+  - Some privileged instructions that can only be executed in kernel mode (interrupt instruction and input-output management etc)
+- Necessity
+  - The operating system can be accidentally wiped out and overwritten by data in a running user program
+  - Processes can write in the same system at the same time
+![User mode and Kernal mode](Image/kernal-user_mode.png)
+### Management
+- Interleave the execution of multiple processes  
+  - Starvation  
+    **Lower priority process never get CPU**  
+    **Increase priority of low priority processes after some fixed amount of time quantum (Aging)**  
+  ---
+  > https://www.geeksforgeeks.org/difference-between-dispatcher-and-scheduler/  
+  > https://afteracademy.com/blog/what-is-context-switching-in-operating-system  
+  - Dispatcher  
+    **Small program in main memory that switches the process**  
+    **Gives a process control over the CPU after it has been selected by the short-term scheduler**
+    - Switching context
+      - Save the current process context before putting another process in running state
+      - Running process should be stopped for CPU executing higher priority process when it comes in the ready state
+      - Stop the process in running state to handle the interruption when it occurs
+      - Transition between user mode and kernel mode
+    - Switching to user mode
+    - Jumping to the proper location in the user program to restart that program
+  - Scheduler 
+    - Long term (job)  
+      **Decides how many process store or load into main memory**  
+      **The degree of multi-programming of system (How many process stay in the ready queue)**
+    - Medium term  
+      **Sends required I/O operation process from running queue to blocked queue**  
+      **Shifted a completed I/O operation process to ready queue**
+    - Short term (CPU)  
+      **Select a single process in the ready queue for execution**    
+
+| Type | Dispatcher | Scheduler |
+| --- | --- | --- |
+| Definition |  Just a code segment | Long-term, Short-term, Medium-term |
+| Dependency | Dependent on scheduler | Works independently |
+| Algorithm | / | First Come First Serve (FCFS), Shortest-Job-First (SJF), Shortest Remaining Time, <br /> Priority, Round Robin, Multilevel Queue |
+| Function | Switching context, Switching to user mode, Jumping to the proper location in the user program to restart that program | Select processes |
+- Allocate resources to processes
+- Protect the resources of each process from other processes
+- Enable processes :
+  **Share and exchange information**  
+  **Synchronization among each other**
+  
+# Process State
+## Notes
+> https://www.gatevidyalay.com/process-states-in-operating-system/  
+> https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/
+- Minimum states:
+  - New state, ready state, run state and terminate state (4)
+  - Requires the I/O operation (5)
+- N processor can execute only N process at a time
+- State to suspend state
+  - Moving a process with lower priority from ready state to suspend ready state
+  - Moving a process with lower priority from wait state to suspend wait stat
+## State
+- New / Create
+- Run
+- Terminated or completed
+- Ready
+- Suspend ready
+- Wait or Blocked
+- Suspend wait or Suspend blocked
+![Process State](Image/process-state.png)  
+![Two suspend state](Image/two-suspend-state.png)
