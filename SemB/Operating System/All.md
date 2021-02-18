@@ -478,7 +478,8 @@ else {} // error in fork()
 **Other attributes**  
 **May maintained by a file management system**
 ## Process Table
-> https://www.geeksforgeeks.org/process-table-and-process-control-block-pcb/  
+> https://www.geeksforgeeks.org/process-table-and-process-control-block-pcb/
+---
 **One entry for each process in the process table**  
 **Each entry points to a process image**  
 ![Process Table](Image/process-table.png)
