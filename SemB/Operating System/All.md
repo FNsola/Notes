@@ -445,7 +445,19 @@ if (pid > 0) {} // parent
 else if (pid == 0) {} // child
 else {} // error in fork()
 ```
-[Fork Transition Diagram](Image/fork-transition-diagram.png)    [Unix Process State](Image/unix-process-state.png)
+![Fork Transition Diagram](Image/fork-transition-diagram.png)
+
+| State | Explanation |
+| --- | --- |
+| User Running | Executing in user mode |
+| Kernel Running | Executing in kernel mode |
+| Ready to Run, in Memory | Ready to run as soon as the kernel schedules it |
+| Asleep in Memory | Unable to execute until an event occurs; process is in main memory |
+| Ready to Run, Swapped | Process is ready to run, but the swapper must swap the process into main memory before the kernel can schedule it to execute |
+| Sleeping, Swapped | The process is awaiting an event and has been swapped to secondary storage (a blocked state) |
+| Preempted | Process is returning from kernel to user mode, but the kernel preempts it and does a process switch to schedule another process |
+| Created | Process is newly created and not yet ready to run |
+| Zombie | Process no longer exists, but it leaves a record for its parent process to collect |
 
 # OS Control Structure
 ## Memory Table
@@ -468,14 +480,15 @@ else {} // error in fork()
 ## Process Table
 > https://www.geeksforgeeks.org/process-table-and-process-control-block-pcb/  
 **One entry for each process in the process table**  
-**Each entry points to a process image**
-[Process Table](Image/process-table.png)
+**Each entry points to a process image**  
+![Process Table](Image/process-table.png)
 ### Process Image
 > https://tldp.org/LDP/LG/issue23/flower/psimage.html  
 > https://www.tutorialspoint.com/inter_process_communication/inter_process_communication_process_image.htm  
+---
 **Must not modify itself at any time (readonly)**  
 **Allocate a section of virtual memory for loaded program to forms useable address space**  
-[Process Image](Image/process-image.png)
+![Process Image](Image/process-image.png)
 - Program code  
   **Dynamic paging**
   **Shared between process**
@@ -504,4 +517,4 @@ else {} // error in fork()
   - Memory limits (page table, segment tables etc)  
     **Information about memory management system used by the operating system**
   - Open files list (list of files opened for the process)  
-  [Process Control Block](Image/process-control-block.png)
+  ![Process Control Block](Image/process-control-block.png)
