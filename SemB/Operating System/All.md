@@ -317,7 +317,7 @@
 - N processor can execute only N process at a time
 - State to suspend state
   - Moving a process with lower priority from ready state to suspend ready state
-  - Moving a process with lower priority from wait state to suspend wait stat
+  - Moving a process with lower priority from wait state to suspend wait state
 ## State
 - New / Create  
   **A program present in secondary memory that will be picked up by OS to create and initiate the process for execution**
@@ -326,12 +326,23 @@
 - Terminated or completed  
   **After execution is completed**  
   **The process in context (PCB) is deleted by the OS**
-- Ready
+- Ready  
   **The process load into main memory**  
   **The process ready to run and wait to get the CPU time for its execution (queue)**
-- Suspend ready
-- Wait or Blocked
-- Suspend wait or Suspend blocked
+- Suspend ready  
+  **A process with higher priority has to be executed but the main memory is full**  
+  **Free memory by moving a lower priority process to suspend ready state**  
+  **When main memory becomes available, the process is brought back to the ready state**
+  **Process have problem**  
+  **For debugging**  
+  **A process execute periodically and suspend while waiting for the next time**  
+  **Examine or modify the suspended process or coordinate the activity of various child process**
+- Wait or Blocked  
+  **A process requests access to I/O or needs input from the user or needs access to a critical region**  
+  **The process goes to the ready state when I/O operation is completed**
+- Suspend wait or Suspend blocked  
+  **Similar to suspend ready but uses the process which was performing I/O operation**
+  **The process goes to the suspend ready when I/O operation is completed**
 ![Process State](Image/process-state.png)  
 ![Two suspend state](Image/two-suspend-states.png)
 
@@ -349,6 +360,8 @@
 **process come from ready state for the first time to its completion (Burst time + Waiting time or Exit time - Arrival time)**  
 ### Waiting time
 **process in the ready state waiting for CPU(Turnaround time - Burst time)**
+### CPU and IO Bound Processes
+**If the process is intensive in terms of CPU operations then it is called CPU bound process. Similarly, If the process is intensive in terms of I/O operations then it is called IO bound process**
 ### Mode
 > https://www.tutorialspoint.com/User-Mode-vs-Kernel-Mode
 - User mode
@@ -358,6 +371,7 @@
   - Starts in kernel mode when the system boots
   - Executes applications in user mode after the operating system is loaded
   - Some privileged instructions that can only be executed in kernel mode (interrupt instruction and input-output management etc)
+  - Resides in memory (in a protected area) all the time
 - Necessity
   - The operating system can be accidentally wiped out and overwritten by data in a running user program
   - Processes can write in the same system at the same time
@@ -398,6 +412,96 @@
 | Function | Switching context, Switching to user mode, Jumping to the proper location in the user program to restart that program | Select processes |
 - Allocate resources to processes
 - Protect the resources of each process from other processes
-- Enable processes :
+- Enable processes:  
   **Share and exchange information**  
   **Synchronization among each other**
+- Switch process  
+  **Process switch occur any time that the operating system has gained control from the currently running process**
+  #### Reason
+  - Interrupt  
+    **External execution of the current instruction (eg I/O interrupt, clock interrupt)**
+  - Trap (illegal file access)
+  - System call (os function) or supervisor call
+  #### Step
+  1. Save context of processor including program counter and other registers
+  2. Update the PCB of current running state process
+  3. Move the PCB of this process to (suspend) ready state or (suspend) block state
+  4. Select another process for execution
+  5. Update the PCB of the process selected
+  6. Update memory management data structures
+  7. Restore context of the processor to that which existed at the time the selected process was last switched out
+  [Process Switching](Image/process-switching.png)
+### Fork in Unix
+- Allocate a slot in the process table for the new process
+- Not share any memory
+- Assign PID to the child process
+- Make a copy of parent process image
+- Assign the child process to the Ready to Run state
+- Return child process PID to parent process
+- Child process begins executing at the same point in the code as the parent
+```cpp
+pid_t pid = fork();
+if (pid > 0) {} // parent
+else if (pid == 0) {} // child
+else {} // error in fork()
+```
+[Fork Transition Diagram](Image/fork-transition-diagram.png)    [Unix Process State](Image/unix-process-state.png)
+
+# OS Control Structure
+## Memory Table
+**Keep track of both main (real) and secondary (virtual) memory**  
+**Allocation of main memory to process**  
+**Allocation of secondary memory to process**  
+**Protection attributes that which process may access certain shared memory regions**  
+**Manage virtual memory**
+## I/O Table
+**Manage the I/O devices and channels of the computer**  
+**If an I/O operation is in progress, the OS needs to know:**  
+  **The status of the I/O operation**  
+  **The location in main memory being used as the source or destination of the I/O transfer**
+## File Tables
+**Existence of files**  
+**Location on secondary memory**  
+**Current status**  
+**Other attributes**  
+**May maintained by a file management system**
+## Process Table
+> https://www.geeksforgeeks.org/process-table-and-process-control-block-pcb/  
+**One entry for each process in the process table**  
+**Each entry points to a process image**
+[Process Table](Image/process-table.png)
+### Process Image
+> https://tldp.org/LDP/LG/issue23/flower/psimage.html  
+> https://www.tutorialspoint.com/inter_process_communication/inter_process_communication_process_image.htm  
+**Must not modify itself at any time (readonly)**  
+**Allocate a section of virtual memory for loaded program to forms useable address space**  
+[Process Image](Image/process-image.png)
+- Program code  
+  **Dynamic paging**
+  **Shared between process**
+- Program data  
+  **Distinguished as initialized variables and uninitialized variables including external global and static variables**
+  **Data blocks are not shared between processes by default**
+  **Values of variables could be changed during run time**
+- Stack  
+  **Each process has at least two last-in, first-out (LIFO) stacks, including a user stack for user mode and a kernel stack for kernel mode**
+  **Allocate for automatic variables and function parameters**
+  **Store parameters and calling addresses for procedure and system calls**
+- Heap  
+  **Allocate for dynamic memory storage**
+- Process Control Block  
+  **Data needed by the operating system to control the process**
+  - Pointer  
+    **Saved the current position of the process when switching one state to another state**
+  - Process state  
+    **Process state, priority, scheduling-related info, waiting event and data structuring**
+  - Process number  
+    **Stores the process identifier (PID)**
+  - Program counter  
+    **Next instruction address that is to be executed for the process**
+  - Register  
+    **CPU registers include accumulator, base registers and general purpose registers**
+  - Memory limits (page table, segment tables etc)  
+    **Information about memory management system used by the operating system**
+  - Open files list (list of files opened for the process)  
+  [Process Control Block](Image/process-control-block.png)
