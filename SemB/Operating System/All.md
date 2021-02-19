@@ -519,3 +519,53 @@ else {} // error in fork()
     **Information about memory management system used by the operating system**
   - Open files list (list of files opened for the process)  
   ![Process Control Block](Image/process-control-block.png)
+# Threads
+> https://www.backblaze.com/blog/whats-the-diff-programs-processes-and-threads/  
+> https://www.geeksforgeeks.org/thread-control-block-in-operating-system/
+## Overview
+**More vulnerable to affect other thread in the same process**
+
+| Type | Process | Threads |
+| :---: | --- | --- |
+| Operation | Heavyweight | lighter weight |
+| Memory | Own memory space <br /> don't share memory with other | Use the memory of the process they belong to <br /> share memory with other in same process |
+| Inter-process/thread communication | Slow (different memory address) | Fast (share memory) |
+| Context switching between process/thread | Expensive | Less Expensive |
+
+![Thread Model](Image/process-thread.png)
+![Thread Control Block](Image/thread-control-block.png)
+## Example
+- Foreground and background work
+- Asynchronous processing (backup)
+- Speed of execution (Calculate parallel)
+## Level
+  - User-Level Threads (ULT) & Kernel-Level Threads (KLT)
+
+  | Type | ULT | KLT |
+  | :---: | --- | --- |
+  | Thread Management | Done by calling threads library within application <br /> Application and its threads are allocated to a single process managed by the kernel | Done by kernel <br /> No thread management done by application, just an API to the kernel thread facility |
+  | Kernel maintenance | Not aware of the existence threads | Maintain whole process's context information and all threads in process <br /> Each ULT map to a KLT |
+  | Kernel Scheduling | Done on process basis | Done on thread basis |
+  
+  - Combined Approach  
+    **Application creates m ULTs and OS provides pool of n KLTs**  
+    **Multiple ULTs are mapped onto a smaller or equal number of KLTs**  
+    **Multiple threads within application can run in parallel on multiple processors**  
+    **A blocking system call do not need to block entire process**
+  
+  User-Level Threads
+  
+  | Advantages | Disadvantages |
+  | --- | --- |
+  | Do not switch to kernel mode to do thread management (save the overhead of switching two mode) | Only a thread within a process can execute at a time (multithreaded application cannot take advantage of multiprocessing) |
+  | Scheduling can be application specific | All threads with process are blocked when ULT execute blocking system call |
+  | Can run on any OS (application-level function) |  |
+  
+  Kernel-Level Threads
+  
+  | Advantages | Disadvantages |
+  | --- | --- |
+  | Kernel can simultaneously schedule multiple threads within process onto multiple processors | Require switch to kernel mode to transfer control to another thread within process |
+  | Kernel can schedule another thread within process if the current thread is blocked | Manage KLT is slower than ULT |
+  | Kernel routines can be multithreaded | Implementation needs OS support |
+## Pthreads
