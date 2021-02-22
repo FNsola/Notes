@@ -10,7 +10,7 @@
 - Gatherer (accumulator)
 - One-way flag (boolean)
 - Temporary (Holding very short period)
-- Organizer
-- Transformation (Gets new value with same calculation from another variable)  
+- Organizer  
   **Rearrange element after initialization**  
   **e.g list, array**
+- Transformation (Gets new value with same calculation from another variable)
