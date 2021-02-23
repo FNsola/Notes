@@ -15,6 +15,8 @@
   **e.g list, array**
 - Transformation (Gets new value with same calculation from another variable)
 
+![Diagram](Image/diagram.png)
+
 # Use Case
 ## Diagram
 **Use simple grammar**  
@@ -59,3 +61,24 @@
 - Develop and validate the requirements 
 - Form the basis for the definition of test cases 
 - Structure user manuals 
+
+# Class Diagram
+> https://spicyboyd.blogspot.com/2018/07/umlclass-diagram-relationships.html  
+> https://www.tutorialspoint.com/object_oriented_analysis_design/ooad_uml_basic_notation.htm
+##  Relationship
+| Term | Explanation | Symbol |
+| --- | --- | --- |
+| Dependency | A use B <br /> ![Example](Image/class-dependency.png) | ![Symbol](Image/class-dependency-symbol.png) |
+| Association | A has C <br /> ![Example](Image/class-association.png) | ![Symbol](Image/class-association-symbol.png) |
+| Aggregation | A owns B <br /> Can exist independently <br /> A needs B | ![Symbol](Image/class-aggregation-symbol.png) |
+| Composition | B is part of A <br /> B can exist independtly but A cannot <br /> A must need B | ![Symbol](Image/class-composition-symbol.png) |
+| Realization | interface/implements | ![Symbol](Image/class-realization-symbol.png) |
+| Generalization | inheritance/extends | ![Symbol](Image/class-generalization-symbol.png) |
+## Class\\Object
+| **Class** | **Object** |
+| --- | --- |
+| ![Class Structure](Image/class-struct.png) | ![Object Structure](Image/class-object-struct.png) |
+### Attribute
+\[\+ public\] \[\- private\] \[\# protected\]
+
+# Sequence Diagram
