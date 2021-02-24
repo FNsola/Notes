@@ -82,3 +82,9 @@
 \[\+ public\] \[\- private\] \[\# protected\]
 
 # Sequence Diagram
+> https://creately.com/blog/diagrams/sequence-diagram-tutorial/  
+> https://www.lucidchart.com/pages/uml-sequence-diagram/#section_5
+
+| ![Actor](Image/sequence-diagram-actor.png) | ![Object](Image/sequence-diagram-object.png) | ![Entity](Image/sequence-diagram-entity.png) | ![Boundary](Image/sequence-diagram-boundary.png) | ![Control](Image/sequence-diagram-control.png) |
+| --- | --- | --- | --- | --- |
+|  |  |  |  |  |
