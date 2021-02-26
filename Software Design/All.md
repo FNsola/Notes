@@ -85,6 +85,11 @@
 > https://creately.com/blog/diagrams/sequence-diagram-tutorial/  
 > https://www.lucidchart.com/pages/uml-sequence-diagram/#section_5
 
+### Object Notation
 | ![Actor](Image/sequence-diagram-actor.png) | ![Object](Image/sequence-diagram-object.png) | ![Entity](Image/sequence-diagram-entity.png) | ![Boundary](Image/sequence-diagram-boundary.png) | ![Control](Image/sequence-diagram-control.png) |
 | --- | --- | --- | --- | --- |
-|  |  |  |  |  |
+| / | / | Element / Data | Interface | Controller |
+
+### Message Arrow
+| ![Synchronous](Image/sequence-diagram-synchronous.png) | ![Asynchronous](Image/sequence-diagram-asynchronous.png) | ![Return](Image/sequence-diagram-return.png) | ![Destruction](Image/sequence-diagram-destruction.png) | ![Delay](Image/sequence-diagram-delay.png) |
+| --- | --- | --- | --- | --- |
