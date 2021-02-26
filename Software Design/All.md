@@ -84,14 +84,16 @@
 # Sequence Diagram
 > https://creately.com/blog/diagrams/sequence-diagram-tutorial/  
 > https://www.visual-paradigm.com/learning/handbooks/software-design-handbook/sequence-diagram.jsp
+###
+**Sequence Number (1, 2, 3, 4, ... / 1.1, 1.2, 1.3, ...)**
 ### Object Notation
 | Actor | Object | Element/Data | Interface | Controller |
 | :---: | :---: | :---: | :---: | :---: |
 | ![Actor](Image/sequence-diagram-actor.png) | ![Object](Image/sequence-diagram-object.png) | ![Entity](Image/sequence-diagram-entity.png) | ![Boundary](Image/sequence-diagram-boundary.png) | ![Control](Image/sequence-diagram-control.png) |
 ### Message Arrow
-| Synchronous | Asynchronous | Return message | Destory object | Message delay |
-| :---: | :---: | :---: | :---: | :---: |
-| ![Synchronous](Image/sequence-diagram-synchronous.png) | ![Asynchronous](Image/sequence-diagram-asynchronous.png) | ![Return](Image/sequence-diagram-return.png) | ![Destruction](Image/sequence-diagram-destruction.png) | ![Delay](Image/sequence-diagram-delay.png) |
+| Synchronous | Asynchronous | Return message | Create object | Destory object | Message delay |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| ![Synchronous](Image/sequence-diagram-synchronous.png) | ![Asynchronous](Image/sequence-diagram-asynchronous.png) | ![Return](Image/sequence-diagram-return.png) | ![Creation](Image/sequence-diagram-create.png) | ![Destruction](Image/sequence-diagram-destruction.png) | ![Delay](Image/sequence-diagram-delay.png) |
 ### Fragment
 | Alternative | Optional | Loop | Parallel | Sequence diagram | Reference |
 | :---: | :---: | :---: | :---: | :---: | :---: |
