@@ -83,13 +83,17 @@
 
 # Sequence Diagram
 > https://creately.com/blog/diagrams/sequence-diagram-tutorial/  
-> https://www.lucidchart.com/pages/uml-sequence-diagram/#section_5
-
+> https://www.visual-paradigm.com/learning/handbooks/software-design-handbook/sequence-diagram.jsp
 ### Object Notation
+| Actor | Object | Element/Data | Interface | Controller |
+| :---: | :---: | :---: | :---: | :---: |
 | ![Actor](Image/sequence-diagram-actor.png) | ![Object](Image/sequence-diagram-object.png) | ![Entity](Image/sequence-diagram-entity.png) | ![Boundary](Image/sequence-diagram-boundary.png) | ![Control](Image/sequence-diagram-control.png) |
-| --- | --- | --- | --- | --- |
-| / | / | Element / Data | Interface | Controller |
-
 ### Message Arrow
+| Synchronous | Asynchronous | Return message | Destory object | Message delay |
+| :---: | :---: | :---: | :---: | :---: |
 | ![Synchronous](Image/sequence-diagram-synchronous.png) | ![Asynchronous](Image/sequence-diagram-asynchronous.png) | ![Return](Image/sequence-diagram-return.png) | ![Destruction](Image/sequence-diagram-destruction.png) | ![Delay](Image/sequence-diagram-delay.png) |
-| --- | --- | --- | --- | --- |
+### Fragment
+| Alternative | Optional | Loop | Parallel | Sequence diagram | Reference |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| ![Alternative](Image/sequence-diagram-alt.png) | ![Optional](Image/sequence-diagram-opt.png) | ![Loop](Image/sequence-diagram-loop.png) | ![Parallel](Image/sequence-diagram-par.png) | ![Sequence diagram](Image/sequence-diagram-sd.png) | ![Reference](Image/sequence-diagram-ref.png) |
+| if else | if | while/for loop | Each fragment run in parallel | Surround an entire sequence diagram | Refers to defined diagram |
