@@ -31,6 +31,7 @@
   **Alocation of space**  
   **Operations on files**
   
-![3-level Architecture](Image/3-level architecture.png)
+![3-level Architecture](Image/3-level-architecture.png)
 
 # ER Diagram
+![ER Diagram](Image/er-diagram.png)
