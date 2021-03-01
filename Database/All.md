@@ -102,7 +102,8 @@ The key that refers to the primary key on other tables
 - Boyce-Codd Normal Form (BCNF/3.5NF)
   **Remove Dependency in 3NF**
   
-# Command (SQL)
+# SQL
+## Command
 ```sql
 // Searching in DB
 SELECT <attribute *|...,...|DISTINCT ...>
@@ -152,3 +153,26 @@ WHERE <condition>
 // Drop View
 DROP VIEW <view name>
 ```
+## Operator & Function
+> https://www.w3schools.com/sql/sql_operators.asp
+> https://www.w3schools.com/sql/sql_ref_sqlserver.asp
+
+### Overall
+| Type | Operator | Description |
+| :---: | :---: | --- |
+| Arithmetic | + <br />	- <br /> * <br /> / <br /> % | Add <br /> Subtract <br /> Multiply <br /> Divide <br /> Modulo	|
+| Bitwise  | & <br /> \| <br /> ^ |	Bitwise AND <br /> Bitwise OR <br /> Bitwise exclusive OR |
+| Comparison | = <br /> > <br /> < <br /> >= <br /> <= <br /> <> <br /> | Equal to	<br /> Greater than <br /> Less than <br /> Greater than or equal to <br /> Less than or equal to <br /> Not equal to |
+| Compound | += <br /> -= <br /> \*= <br /> /= <br /> %= <br /> &= <br /> ^-= <br /> \|\*= | Add equals <br /> Subtract equals <br /> Multiply equals <br /> Divide equals <br /> Modulo equals <br /> Bitwise AND equals <br /> Bitwise exclusive equals <br /> Bitwise OR equals |
+| Logical | ALL <br /> ANY/SOME <br /> EXISTS <br /> AND <br /> OR <br /> NOT <br /> BETWEEN ... AND ... <br /> IN <br /> LIKE | TRUE if all of the subquery values meet the condition	<br /> TRUE if any of the subquery values meet the condition	<br /> TRUE if the subquery returns one or more records	<br /> TRUE if all the conditions separated by AND is TRUE	<br /> TRUE if any of the conditions separated by OR is TRUE	<br /> Displays a record if the condition(s) is NOT TRUE	<br /> TRUE if the operand is within the range of comparisons	<br /> TRUE if the operand is equal to one of a list of expressions	<br /> TRUE if the operand matches a pattern |
+
+### Like operator
+| LIKE Operator Pattern | Description |
+| --- | --- |
+| LIKE 'a%' | Finds any values that start with "a" |
+| LIKE '%a'	| Finds any values that end with "a" |
+| LIKE '%or%' | Finds any values that have "or" in any position |
+| LIKE '\_r%'	| Finds any values that have "r" in the second position |
+| LIKE 'a\_%'	| Finds any values that start with "a" and are at least 2 characters in length |
+| LIKE 'a\_\_%'	| Finds any values that start with "a" and are at least 3 characters in length |
+| LIKE 'a%o'	| Finds any values that start with "a" and ends with "o" |
