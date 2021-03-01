@@ -111,8 +111,12 @@ HAVING <group condition>
 ORDER BY <attribute list ASC|DESC>
 
 CREATE TABLE <table name> (
-  <column name> <type> <NOT NULL|NULL>,
-  ...
+  <column name> <type> <NOT NULL|NULL|DEFAULT value>,
+  ...,
+  CONSTRAINT <constraint name> PRIMARY KEY <column list>,
+  CONSTRAINT <constraint name> FOREIGN KEY <column> REFERENCES <table name>(column),
+  CONSTRAINT <constraint name> CHECK <condition>,
+  CONSTRAINT <constraint name> UNIQUE <column list>
 );
 
 INSERT INTO <table name> (<column list>) VALUES (<value list>);
@@ -120,9 +124,13 @@ DELETE FROM <table name> WHERE <condition>
 UPDATE <table name> SET <column name> = <value>, ... WHERE <condition>
 
 DROP TABLE <table name>;
-ALTER TABLE <table name> <ADD> <column name> <column type>;
-ALTER TABLE <table name> <DROP COLUMN> <column name>;
-ALTER TABLE <table name> <MODIFY/ALTER COLUMN> <column name> <column type>;
+ALTER TABLE <table name> ADD <column name> <column type>;
+ALTER TABLE <table name> DROP COLUMN <column name>;
+ALTER TABLE <table name> MODIFY/ALTER COLUMN <column name> <column type>;
+
+ALTER TABLE <table name> DROP CONSTRAINT <constraint name>
+ALTER TABLE <table name> ALTER COLUMN <column name> DROP DEFAULT;
+ALTER TABLE <table name> ADD CONSTRAINT <constraint type> <argument>
 
 CREATE [UNIQUE] INDEX <index name> ON <table name> (column list ASC|DESC);
 DROP INDEX <index name>;
