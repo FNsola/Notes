@@ -67,6 +67,7 @@ The key that refers to the primary key on other tables
 
 # Inference Rules of Functional Dependency (FD)
 | Rule | Case |
+| --- | --- |
 | Reflective | If X subset Y, then X -> Y |
 | Augmentation | If X -> Y, then XZ -> YZ |
 | Transitive | If X -> Y and Y -> Z, then X -> Z |
