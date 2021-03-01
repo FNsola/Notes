@@ -154,7 +154,7 @@ WHERE <condition>
 DROP VIEW <view name>
 ```
 ## Operator & Function
-> https://www.w3schools.com/sql/sql_operators.asp
+> https://www.w3schools.com/sql/sql_operators.asp  
 > https://www.w3schools.com/sql/sql_ref_sqlserver.asp
 
 ### Overall
