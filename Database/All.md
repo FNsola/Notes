@@ -103,6 +103,7 @@ The key that refers to the primary key on other tables
   
 # Command (SQL)
 ```sql
+// Searching in DB
 SELECT <attribute *|...,...|DISTINCT ...>
 FROM <table list>
 WHERE <condition>
@@ -110,6 +111,7 @@ GROUP BY <grouping attribute(s)>
 HAVING <group condition>
 ORDER BY <attribute list ASC|DESC>
 
+// Create Table
 CREATE TABLE <table name> (
   <column name> <type> <NOT NULL|NULL|DEFAULT value>,
   ...,
@@ -119,26 +121,33 @@ CREATE TABLE <table name> (
   CONSTRAINT <constraint name> UNIQUE <column list>
 );
 
+// Modify Table data
 INSERT INTO <table name> (<column list>) VALUES (<value list>);
 DELETE FROM <table name> WHERE <condition>
 UPDATE <table name> SET <column name> = <value>, ... WHERE <condition>
 
+// Modify table structure
 DROP TABLE <table name>;
 ALTER TABLE <table name> ADD <column name> <column type>;
 ALTER TABLE <table name> DROP COLUMN <column name>;
 ALTER TABLE <table name> MODIFY/ALTER COLUMN <column name> <column type>;
 
+// Modify table constraint
 ALTER TABLE <table name> DROP CONSTRAINT <constraint name>
 ALTER TABLE <table name> ALTER COLUMN <column name> DROP DEFAULT;
 ALTER TABLE <table name> ADD CONSTRAINT <constraint type> <argument>
 
+// Create Index
 CREATE [UNIQUE] INDEX <index name> ON <table name> (column list ASC|DESC);
+// Drop Index
 DROP INDEX <index name>;
 
+// Create View
 CREATE [OR REPLACE] VIEW <view name> AS
 SELECT <column list>
 FROM <table name>
 WHERE <condition>
 
+// Drop View
 DROP VIEW <view name>
 ```
