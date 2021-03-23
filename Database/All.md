@@ -176,3 +176,13 @@ DROP VIEW <view name>
 | LIKE 'a\_%'	| Finds any values that start with "a" and are at least 2 characters in length |
 | LIKE 'a\_\_%'	| Finds any values that start with "a" and are at least 3 characters in length |
 | LIKE 'a%o'	| Finds any values that start with "a" and ends with "o" |
+
+# Relational Algebra
+- Select Operation (σ) -> σ <condition> (TABLE) = select statement (SELECT * FROM TABLE WHERE <condition>)
+- Project Operation (π) -> π <attribute list> (TABLE) = select statement (SELECT DISTINCT <attribute list> FROM TABLE)
+- Rename Operation (ρ) -> ρ<New Table Name>(<New Attribute Name>)(TABLE)
+- Union Operation (∪) -> TABLE1 ∪ TABLE2 = select statement (SELECT <attribute(s)> FROM TABLE1 UNION/UNION ALL SELECT <attribute(s)> FROM TABLE2);
+- Intersection Operation (∩) -> TABLE1 ∩ TABLE2 = select statement (SELECT DISTINCT <attribute(s)> FROM TABLE1, TABLE2 WHRER TABLE1.attr = TABLE2.attr;
+- Set Difference (−) -> TABLE1 \- TABLE2 = select statement (SELECT DISTINCT <attribute(s)> FROM TABLE1 LEFT JOIN TABLE2 ON TABLE1.attr = TABLE2.attr WHERE TABLE2.attr IS NULL)
+- Cartesian/Cross Product (Χ) -> TABLE1 X TABLE2
+- Join Operation (⋈)
