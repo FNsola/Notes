@@ -186,3 +186,35 @@ DROP VIEW <view name>
 - Set Difference (−) -> TABLE1 \- TABLE2 = select statement (SELECT DISTINCT <attribute(s)> FROM TABLE1 LEFT JOIN TABLE2 ON TABLE1.attr = TABLE2.attr WHERE TABLE2.attr IS NULL)
 - Cartesian/Cross Product (Χ) -> TABLE1 X TABLE2
 - Join Operation (⋈)
+
+# Indexing
+> https://www.tutorialspoint.com/dbms/dbms_indexing.htm
+```
+Primary Index
+  Define on ordered data file (key field)
+  Primary key of relation
+Secondary Index
+  Candidate key + unique value / non-key with duplicate values
+Clustering Index
+  Define on ordered data file (non-key field)
+```
+## Dense Index
+- Index records contain search key value and a pointer to the actual record on the disk
+- Searching faster
+- Require more space to store index records itself  
+![Dense Index](Image/dense_index.png)
+## Sparse Index
+- Less space & maintenance overhead for insertion, and deletions
+- Slower compared to the dense Index for locating records
+- Index records are not created for every search key
+- To search a record  
+  Proceed by index record and reach at the actual location of the data  
+  If it is not directly reach, starting sequential search until the desired data is found
+![Sparse Index](Image/sparse_index.png)
+## Multilevel Index
+- Break down the index into several smaller indices -> small outermost level save in a single disk block
+- Save in a single disk block
+- Reduce the number of disk accesses to short any record
+![Multilevel Index](Image/multilevel_index.png)
+
+# B+ Tree
