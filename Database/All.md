@@ -215,6 +215,6 @@ Clustering Index
 - Break down the index into several smaller indices -> small outermost level save in a single disk block
 - Save in a single disk block
 - Reduce the number of disk accesses to short any record
-![Multilevel Index](Image/multilevel_index.png)
+![Multilevel Index](Image/multi_level_index.png)
 
 # B+ Tree
